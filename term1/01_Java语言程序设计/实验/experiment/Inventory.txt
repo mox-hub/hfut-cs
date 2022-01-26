@@ -1,0 +1,3 @@
+17      42      6       Widget,blue
+1234    0       4       whatsit
+123123  999999  98      Doohicky

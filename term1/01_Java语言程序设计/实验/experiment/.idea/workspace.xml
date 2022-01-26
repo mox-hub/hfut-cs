@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a836997a-b186-41ad-97b3-6347b2966e10" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1anS1mTdhCAsq99SEATfYgyVQt1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\programProj\Java\experiment" />
+      <recent name="E:\programProj\Java\experiment\src" />
+      <recent name="E:\programProj\Java\experiment\src\exp04" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Inventory">
+    <configuration name="Inventory (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exp04.Inventory" />
+      <module name="experiment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exp04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Inventory (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Inventory" />
+      <module name="experiment" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Inventory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exp03.Inventory" />
+      <module name="experiment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exp03.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Point3D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exp01.Point3D" />
+      <module name="experiment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exp01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerWindows" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="exp02.ServerWindows" />
+      <module name="experiment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="exp02.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Inventory" />
+        <item itemvalue="Application.Point3D" />
+        <item itemvalue="Application.Inventory (2)" />
+        <item itemvalue="Application.ServerWindows" />
+        <item itemvalue="Application.Inventory (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a836997a-b186-41ad-97b3-6347b2966e10" name="Default Changelist" comment="" />
+      <created>1587369652617</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1587369652617</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="178" key="#HTTP_Proxy" timestamp="1590679286014">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#HTTP_Proxy/0.0.1920.1040@0.0.1920.1040" timestamp="1590679286014" />
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599097936236">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599097936236" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1599097982127">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599097982127" />
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom" timestamp="1597031388963">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="2" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597031388963" />
+    <state width="1877" height="2" key="GridCell.Tab.0.center" timestamp="1597031388962">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="2" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597031388962" />
+    <state width="1877" height="2" key="GridCell.Tab.0.left" timestamp="1597031388962">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="2" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597031388962" />
+    <state width="1877" height="2" key="GridCell.Tab.0.right" timestamp="1597031388962">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="2" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597031388962" />
+    <state x="574" y="210" key="SettingsEditor" timestamp="1590682204440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="574" y="210" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590682204440" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1599097864986">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599097864986" />
+    <state x="334" y="130" key="new project wizard" timestamp="1599098004114">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="334" y="130" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1599098004114" />
+  </component>
+</project>
