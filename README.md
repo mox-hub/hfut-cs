@@ -135,4 +135,5 @@
 ## License
 
 [The MIT License ](https://opensource.org/licenses/MIT)
+Copyright (c) 2022 Mox
 
