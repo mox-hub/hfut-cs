@@ -8,7 +8,7 @@
 
 合肥工业大学宣城校区CS专业大三在读，菜鸟程序员一枚。
 
-这是我的个人博客：https://blog.moxhub.cn，欢迎留言交流。
+这是我的个人博客：[moxhub](https://blog.moxhub.cn)，欢迎留言交流。
 
 ### 关于仓库
 
