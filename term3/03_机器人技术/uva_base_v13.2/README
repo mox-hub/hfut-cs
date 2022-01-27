@@ -1,0 +1,519 @@
+*****************************************************************
+* UvA_Trilearn 2003 - University of Amsterdam, The Netherlands  *
+* Base code version of the RoboCup-2003 World Champion          *
+* Created by:           Jelle Kok                               *
+* Research Coordinator: Nikos Vlassis                           * 
+* Team Coordinator:     Frans Groen                             *
+* Copyright 2000-2001.  Jelle Kok and Remco de Boer             *
+* Copyright 2001-2002.  Jelle Kok                               *
+* Copyright 2002-2003.  Jelle Kok                               *
+* All rights reserved.                                          *
+*****************************************************************
+
+Last update: 30-10-2003
+
+General information
+-------------------
+
+ This directory contains parts of the source files and configuration
+ files for the UvA Trilearn 2003 soccer simulation team which won the
+ RoboCup-2003 Simulation League in Padova.  The released code contains
+ our low-level and intermediate level implementation
+ (agent-environment synchronization method, world model, player
+ skills), but not our high-level decision procedure. Instead, we have
+ included a simple high-level action selection strategy which is the
+ same as that of the Simple Portugal team.  The fastest player to the
+ ball intercepts the ball and shoots it to a random corner in the
+ opponent goal regardless of his position on the field. The remaining
+ players move to a strategic position which is determined by their
+ home position in the formation and by the position of the ball.
+
+ Furthermore, we deliberately have removed some specific aspects of
+ our (low-level) code, i.e. the learned dribble skill and the opponent
+ modeling in the intercept skill. Our intention was to make sure this
+ base code would be a good starting point, but not too good, since
+ that would be unfair for teams that have been working on their basic
+ for the past years and would be immediately surpassed by new teams
+ that use our code as a basis.
+
+Usage
+-----
+
+ Autoconf and automake are used in order to create this package. A
+ simple
+
+        ./configure
+        ./make
+
+ should compile the sources. The sources have been developed under
+ Linux, which is the recommened platform. However, Alexey Vasilyev
+ (Riga Technical University, Latvia) has provided a windows port for
+ the free Borland C++ compiler. See the ./windows directory for the
+ necessary Makefile and Borland configuration files.
+
+ After the binaries are compiled, they can be started using the
+ start-up script `start.sh' (see contents of this file for details).
+
+ To extend the high-level strategy of this team, look at the method
+ `deMeer5()' in the file `PlayerTeams.cpp' which defines the
+ high-level strategy of the team. The other most important areas for
+ improvement are:
+
+ - the goalie behavior 
+ - intercept method that takes opponents into account 
+ - dribble skill 
+
+Documentation
+-------------
+
+ The source code has been extensively documented using Doxygen
+ (www.doxygen.org).  The created html documentation can be downloaded
+ from our website or generated using the command
+
+        make doc 
+
+ in the directory of this README. The html files will be placed in the
+ directory ./doc/html/. Here it is assumed that the program `dot' has
+ been installed to create collaboration diagrams. If this is not the
+ case then set the variable `HAVE_DOT' in the file `doc/doxygen.cfg'
+ to `NO'.
+ 
+Changes
+-------
+
+ The basic code has changed with respect to the previous base release
+ in 2002 (and not only with the file names ending in .cpp now). Except
+ for the improvements in the low-level methods (e.g., intercept, kick)
+ and the creation of the world model, the code also supports the
+ functionality of the 9.xx protocol (tackle, attentionto, etc) and the
+ synchronization mode.
+
+ We tried to keep the code backward-compatibility with the previous
+ release, but we won't make any promises. Please report when you
+ encounter any major problems.
+
+
+Acknowledgements
+----------------
+
+ The team has initially been built from scratch in 2001 for the
+ master's graduation project of Jelle Kok and Remco de Boer at the
+ University of Amsterdam. Thereafter, Jelle Kok continued the work
+ under supervision of Nikos Vlassis.
+
+ Although we have not copied any code from other teams, we have looked
+ at some of their methods and used this knowledge for our own
+ implementation. For this we would like to thank the following teams:
+
+- FC Portugal 2000: for their team formation and Simple Portugal team
+- CMUnited-99     : for their interception and message parsing methods
+- Cyberoos 2000   : for the description of their synchronization method
+- Essex Wizards   : for the description of their multi-threaded architecture
+
+
+More information
+----------------
+ 
+ More information can be found at the official UvA Trilearn website:
+
+   http://www.science.uva.nl/~jellekok/robocup/index.html
+ 
+ or contact:
+ 
+   Jelle Kok     (jellekok@science.uva.nl)
+
+
+Global overview of classes
+--------------------------
+
+ A global overview of the various classes is as shown below. Note that
+ the SenseHandler, ActHandler and other classes form three different
+ threads that work independently.
+
+
+                    Object          Player  -- Formations
+                      |               |
+                      |               |
+                      |               |
+                      
+                  WorldModel --- BasicPlayer
+   
+                      |               | 
+                      |               |
+                      |               |
+                      
+                SenseHandler      ActHandler
+                      |               | 
+                      |               |
+                      |_______________|
+                             |
+                         Connection 
+                         
+                             |
+                             |
+                             |
+                        SOCCERSERVER
+                             
+ Utility classes which are used by the classes listed above but which
+ are not shown in the diagram are the following:
+
+ - PlayerSettings
+ - Logger, Timing (in Logger.C)
+ - ServerSettings
+ - SoccerTypes, SoccerCommand, Time (in SoccerTypes.C)
+ - Geometry, Line, Circle, Rectangle, VecPosition (all in Geometry.C)
+ - Parse
+
+
+Description of classes
+----------------------
+
+ A description of each of the classes is given below.
+
+Connection
+==========
+
+ This class makes a connection with a socket and contains methods for
+ sending messages to and receiving messages from this socket.
+
+
+SenseHandler
+============
+
+ This class handles the processing of messages that the agent receives
+ from the server. It parses these messages and sends the extracted
+ information to the WorldModel. It also sets a signal to indicate when
+ an action should be sent to the server; this signal is handled by the
+ ActHandler.
+
+
+ActHandler
+==========
+
+ The ActHandler class deals with actuator output. It stores actions
+ into two different queues:
+
+ - m_queueOneCycleCommand:  contains commands which can only be executed once
+                            during a cycle (kick, dash, etc.); the
+                            command which has been received last is
+                            sent to the server.
+ - m_queueMultipleCommands: contains commands which can be executed 
+                            concurrently with commands in
+                            m_queueOneCycleCommand (turn_neck, say,
+                            etc.); all commands in this list are sent
+                            to the server.
+
+ When the ActHandler receives a signal, it converts the soccer
+ commands into string messages and sends them to the server.
+
+
+WorldModel
+==========
+
+ This class contains the current representation of the world as
+ observed by the agent. This representation includes information about
+ all the objects on the field such as the positions and velocities of
+ all the players and the ball.  Information concerning the current
+ play mode is also stored, as well as the time and the
+ score. Furthermore, the WorldModel contains various types of methods
+ that deal with the world state information in different ways:
+
+ - Retrieval methods:  for directly retrieving information about objects in the
+                       world model; these methods are defined in the file
+                       `WorldModel.C'; this file also contains methods for
+                       iterating over a specific set of objects; these methods
+                       make it possible to compare information about different
+                       objects in the same set (e.g. OBJECT_SET_OPPONENTS).
+ - Update methods:     for updating the world model based on new sensory
+                       information received from the SenseHandler;
+                       these methods
+                       are defined in the file `WorldModelUpdate.C'.
+ - Prediction methods: for predicting future states of the world based on past
+                       perceptions and for predicting the effect of
+                       actions performed by the agent; these methods
+                       are defined in the file `WorldModelPredict.C'.
+ - High-level methods: for deriving high-level conclusions from basic
+                       information about the state of the world (e.g.
+                       determining the fastest teammate to the ball); these
+                       methods are defined in the file `WorldModelHighLevel.C'.
+
+
+Object
+======
+
+ This class contains information about all the objects in the
+ simulation. Its implementation is spread over six separate classes
+ which together form an object type hierarchy. These classes are the
+ following:
+
+ - Object:        abstract superclass that contains estimates (and associated
+                  confidence values) for the global positions of all
+                  the objects and that defines methods for retrieving
+                  an updating this information.
+ - FixedObject:   subclass of the Object class that contains information
+                  about the stationary objects on the field (flags,
+                  lines and goals); it adds no additional attributes
+                  to those inherited from the Object superclass.
+ - DynamicObject: subclass of the Object class that contains information about
+                  mobile objects; it adds velocity information to the
+                  general information provided by the Object class.
+ - BallObject:    subclass of the DynamicObject class which contains 
+                  information about the ball; it adds no additional
+                  attributes to those inherited from the DynamicObject
+                  superclass.
+
+ - PlayerObject:  subclass of the DynamicObject class which contains 
+                  information about a specific player on the field
+                  (either a teammate or an opponent); it adds
+                  attributes denoting the global neck angle and global
+                  body angle of the player to the information provided
+                  by the DynamicObject class and it holds a boolean
+                  attribute which indicates whether the player is a
+                  goalkeeper or not; the agent itself is not a member
+                  of this class.
+ - AgentObject:   subclass of the PlayerObject class which contains information
+                  about the agent himself. It adds attributes denoting the
+		  stamina, view angle and view quality of the agent to the
+		  information provided by the PlayerObject class.
+
+
+BasicPlayer
+===========
+
+ This class defines the various skills than an agent can perform. The
+ way in which these skills are executed depends on the current state
+ of the world model.
+
+
+PlayerSettings
+==============
+
+ This class contains parameters which are used in the BasicPlayer
+ class. An example of such a parameter is `dPassEndSpeed' which
+ denotes the desired end speed of the ball when it is passed to a
+ teammate. By changing the values of the parameters in this class it
+ is possible to adapt the behavior of the BasicPlayer.
+
+
+Player
+======
+
+ This class is a subclass of the BasicPlayer class that contains
+ methods for reasoning about the best possible action in a given
+ situation. Action selection is based on the most recent information
+ about the state of the world as obtained from the WorldModel and on
+ the role of the agent in the current team formation.  For making the
+ final decision on whether a particular type of action should be
+ performed, the agent uses the parameter values which are specified in
+ the PlayerSettings class.
+
+
+Formations
+==========
+
+ This class contains information about possible team formations as
+ well as a method for determining a strategic position on the
+ field. Formations are read from a configuration file
+ (formations.conf) and are based on those used by the Simple Portugal
+ team. The implementation is spread over three separate classes:
+
+ - PlayerTypeInfo:    contains information about a player type in a formation.
+ - FormationTypeInfo: contains information about one specific formation.
+ - Formations:        contains information about all the possible team 
+                      formations and stores the currently used
+                      formation. This class is accessible from the
+                      WorldModel class.
+
+
+GenericValues
+=============
+
+ This class is a superclass for all classes that contain settings from
+ the PlayerSettings and ServerSettings classes. Using this class it is
+ possible to link variables to (text) names. When these names with
+ their associated values are read from (or written to) a file, the
+ corresponding variables can be easily set.
+
+  
+Logger
+======
+
+ This class is used by all the other classes to log various kinds of
+ information for debugging purposes. It allows the programmer to
+ specify the level of abstraction (`loglevel') from which he desires
+ debugging information and contains an output stream for writing
+ (usually a file). All log information that is sent to the Logger has
+ a number which is compared to the specified log level (or range of
+ log levels) to determine whether the information should be printed or
+ discarded. It is also possible to log the information together with a
+ time stamp. This time stamp corresponds to the time that has elapsed
+ since a timer was last restarted. This timer is represented by an
+ object from the Timing class which is also defined in the file
+ `Logger.C'.
+
+
+Timing
+======
+
+ This class contains a timer and methods for restarting this timer and
+ for determining the amount of wall clock time that has elapsed since
+ the timer was started. It is mainly used for the timing of incoming
+ messages from the server and for debugging purposes.
+
+
+Parse
+=====
+ 
+ This class contains several static methods for parsing string
+ messages. These methods can skip characters up to a specified point
+ and convert parts of a string to integer or double values. They are
+ mainly used by the SenseHandler that handles the processing of
+ messages from the soccer server.
+
+
+ServerSettings
+==============
+
+ This class contains all the server parameters which are used for the
+ current version of the soccer server (9.x). Examples are the maximum
+ speed of a player (player_speed_max) and the stamina increase per
+ cycle (stamina_inc_max). When the agent is initialized, the server
+ sends him a message containing the values for these parameters. This
+ message is then parsed using the methods from the Parse class and the
+ resulting values are stored in ServerSettings.
+
+  
+SoccerTypes
+===========
+
+ This class contains enumerations for different soccer types that are
+ used in the simulation. It creates an abstraction for using
+ soccer-related concepts (playmodes, referee messages, etc.) in a
+ clean and consistent way throughout the code. Furthermore, this class
+ contains methods for converting parts of string messages received
+ from the server to the corresponding soccer types (e.g.  `(g l)' to
+ `GOAL_LEFT').
+
+
+SoccerCommands
+==============
+
+ This class holds all the necessary information for creating a soccer
+ command that can be sent to the server. It contains variables
+ denoting the possible arguments (angle, power, etc.) of the different
+ soccer commands and stores the type of the current command. Only
+ those variables which are related to the current type will get a
+ legal value. Furthermore, the class contains a method for converting
+ the command into a string message that will be accepted by the soccer
+ server. The definition of this class can be found in the file
+ `SoccerTypes.C'.
+
+
+Time
+====
+
+ This class holds the server time in the form of an ordered pair (t,s)
+ where t denotes the current server cycle and s is the number of
+ cycles since the clock has stopped. Here the value of t equals that
+ of the time stamp contained in the last message received from the
+ server, whereas the value for s will always be 0 while the game is in
+ progress. It is only during dead ball situations (e.g. free kicks)
+ that this value will be different, since in these cases the server
+ time will stop while cycles continue to pass (i.e. actions can still
+ be performed).  Representing the time in this way has the advantage
+ that it allows the players to reason about the number of cycles
+ between events in a meaningful way. The definition of this class can
+ be found in the file `SoccerTypes.C'.
+
+
+Geometry
+========
+
+ This class contains several static methods for performing geometrical
+ calculations and is mainly used by the BasicPlayer for working out
+ action details. Methods have been defined for dealing with (possibly
+ infinite) geometric series and for working with the abc-formula. Note
+ that the `Geometry.C' file also contains several goniometric
+ functions which enable one to specify angles in degrees rather than
+ in radians.
+
+
+VecPosition
+===========
+
+ This class contains the representation of a position (x,y) and
+ defines several methods which operate on this position in different
+ ways. Methods are defined for relatively comparing positions
+ (e.g. `isBehind', `isBetween', etc.) and for converting relative
+ positions to global positions and vice versa. This class also allows
+ you to specify positions in polar coordinates (r,phi) and contains a
+ method for converting polar coordinates (r,phi) to Cartesian
+ coordinates (x,y). Furthermore, the standard arithmetic operators
+ have been overloaded for positions. The definition of this class can
+ be found in the file `SoccerTypes.C'.
+
+
+Line
+====
+
+ This class contains the representation of a line: ax + by + c = 0. It
+ allows one to specify a line in different ways: by providing three
+ values (a, b and c), by giving two points on the line, or by
+ specifying a single point on the line together with an
+ angle. Furthermore, this class contains methods for determining the
+ intersection point of two lines and for determining a line
+ perpendicular to the current line that goes through a given
+ point. The definition of this class can be found in the file
+ `SoccerTypes.C'.
+
+
+Circle
+======
+
+ This class contains the representation of a circle and contains
+ methods that deal with circles. A circle is specified by a
+ VecPosition object which denotes its center and by a value denoting
+ its radius. Methods have been defined for computing the area and
+ circumference of the circle and for determining the intersection
+ points of two circles as well as the size of their intersection
+ area. The definition of this class can be found in the file
+ `SoccerTypes.C'.
+
+
+Rectangle
+=========
+
+ This class contains the representation of a rectangle and contains
+ methods that deal with rectangles. A rectangle is specified by two
+ VecPosition objects denoting the upper left corner and bottom right
+ corner respectively. The most important method in this class
+ determines whether a given point lies inside the current
+ rectangle. The definition of this class can be found in the file
+ `SoccerTypes.C'.
+
+
+The main file
+=============
+  
+ In the file `main.C' all the different classes are initialized and
+ linked after which the player mainloop is called. A single execution
+ of this loop is as follows:
+
+ - block until new sensory information is received
+ - tell the WorldModel to update all the information using the latest message
+   from the server
+ - determine the best possible action in the form of a skill from the Player
+   class
+ - send an action command which is part of this skill to the ActHandler
+
+ This loop is called in each cycle after a sense_body or see message
+ is received.  After a sense_body message a new action is determined
+ based on a prediction of the current world state, whereas after a see
+ message a new action is chosen based on the new visual
+ information. In each case the action is put in the ActHandler
+ queue. In this way the ActHandler will always contain an action even
+ when no visual information arrived during a cycle. When visual
+ information does arrive the action determined after the sense message
+ arrival can be optimized based on the new information, but this is
+ not necessary.
+
