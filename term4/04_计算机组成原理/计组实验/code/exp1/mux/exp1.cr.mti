@@ -1,0 +1,15 @@
+E:/Homework/testBench.v {1 {vlog -work work -vopt E:/Homework/testBench.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module mux4to1_tb
+
+Top level modules:
+	mux4to1_tb
+
+} {} {}} E:/Homework/mux4to1.v {1 {vlog -work work -vopt {E:\Homework\mux4to1.v}
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module mux4to1
+
+Top level modules:
+	mux4to1
+
+} {} {}}

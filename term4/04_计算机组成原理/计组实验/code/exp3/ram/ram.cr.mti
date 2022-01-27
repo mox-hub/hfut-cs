@@ -1,0 +1,16 @@
+{E:/Homework/Principle of Computer Composition/ram/ram.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/ram/ram.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module ram
+
+Top level modules:
+	ram
+
+} {} {}} {E:/Homework/Principle of Computer Composition/ram/ram_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/ram/ram_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module ram
+-- Compiling module ram_tb
+
+Top level modules:
+	ram_tb
+
+} {} {}}

@@ -1,0 +1,28 @@
+#include "stdio.h"
+
+void init_uart();
+void timer_init(unsigned long utimer,unsigned long uprescaler,unsigned long udivider,unsigned long utcntb,unsigned long utcmpb);
+
+void delay()
+{
+	volatile int i = 0x100000;
+	while (i--);
+}
+
+int main()
+{
+	int i = 0;
+
+	init_uart();
+
+	timer_init(0,65,4,62500,0);
+
+	printf("\r\n#############timer test############\r\n");
+	while (1)
+	{
+		printf("%d\r\n",i++);
+		delay();
+	}
+	
+	return 0;
+}

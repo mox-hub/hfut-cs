@@ -1,0 +1,128 @@
+{E:/Homework/Principle of Computer Composition/exp4/rom.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/rom.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module rom
+
+Top level modules:
+	rom
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/alu_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/alu_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module alu
+-- Compiling module alu_tb
+
+Top level modules:
+	alu_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/cpu.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/cpu.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module alu
+-- Compiling module cu
+-- Compiling module extsign
+-- Compiling module pc
+-- Compiling module register_file
+-- Compiling module rom
+-- Compiling module main_memory
+-- Compiling module mux2to1
+-- Compiling module cpu
+
+Top level modules:
+	cpu
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/register_file_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/register_file_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module register_file
+-- Compiling module register_file_tb
+
+Top level modules:
+	register_file_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/rom_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/rom_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module rom
+-- Compiling module rom_tb
+
+Top level modules:
+	rom_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/cpu_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/cpu_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module alu
+-- Compiling module cu
+-- Compiling module extsign
+-- Compiling module pc
+-- Compiling module register_file
+-- Compiling module rom
+-- Compiling module main_memory
+-- Compiling module mux2to1
+-- Compiling module cpu
+-- Compiling module cpu_tb
+
+Top level modules:
+	cpu_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/cu.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/cu.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module cu
+
+Top level modules:
+	cu
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/mux2to1.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/mux2to1.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module mux2to1
+
+Top level modules:
+	mux2to1
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/pc_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/pc_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module pc
+-- Compiling module pc_tb
+
+Top level modules:
+	pc_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/extsign.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/extsign.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module extsign
+
+Top level modules:
+	extsign
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/alu.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/alu.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/pc.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/pc.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/register_file.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/register_file.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module register_file
+
+Top level modules:
+	register_file
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/cu_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/cu_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module cu
+-- Compiling module cu_tb
+
+Top level modules:
+	cu_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/exp4/main_memory.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/exp4/main_memory.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module main_memory
+
+Top level modules:
+	main_memory
+
+} {} {}}

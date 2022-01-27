@@ -1,0 +1,57 @@
+m255
+K3
+z0
+13
+cModel Technology
+dE:\Homework\Principle of Computer Composition\register file
+T_opt
+!s110 1605841886
+V=6ch@FhZaJlYXK^cHSQ783
+04 6 4 work ram_tb fast 0
+=1-00e04c360040-5fb733de-8a-4a7c
+o-quiet -auto_acc_if_foreign -work work +acc
+Z0 tCvgOpt 0
+n@_opt
+OL;O;10.6d;65
+vram
+Z1 !s110 1605841871
+!i10b 1
+!s100 dZlo;QZU_NZPg>b?D]c^X2
+IZYRJUGcH6X0>jeBCoE>751
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dE:/Homework/Principle of Computer Composition/ram
+w1605841658
+8ram.v
+Fram.v
+L0 3
+Z4 OL;L;10.6d;65
+r1
+!s85 0
+31
+Z5 !s108 1605841871.000000
+Z6 !s107 ram.v|E:/Homework/Principle of Computer Composition/ram/ram_tb.v|
+Z7 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/ram/ram_tb.v|
+!i113 0
+Z8 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+R0
+vram_tb
+R1
+!i10b 1
+!s100 VL@NzOJJdZN?K16ackkYN1
+IE4gdBeenZR^XNmjVagm7b3
+R2
+R3
+w1605841855
+8E:/Homework/Principle of Computer Composition/ram/ram_tb.v
+FE:/Homework/Principle of Computer Composition/ram/ram_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R0

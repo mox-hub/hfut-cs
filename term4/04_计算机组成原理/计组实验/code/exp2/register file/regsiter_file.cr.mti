@@ -1,0 +1,15 @@
+{E:/Homework/Principle of Computer Composition/register file/register_file.v} {1 {vlog -work work -vopt {E:/Homework/Principle of Computer Composition/register file/register_file.v}
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module register_file
+
+Top level modules:
+	register_file
+
+} {} {}} {E:/Homework/Principle of Computer Composition/register file/register_file_tb.v} {1 {vlog -work work -vopt {E:/Homework/Principle of Computer Composition/register file/register_file_tb.v}
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module register_file_tb
+
+Top level modules:
+	register_file_tb
+
+} {} {}}

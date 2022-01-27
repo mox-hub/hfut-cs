@@ -1,0 +1,334 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dE:/Homework/Principle of Computer Composition/pc
+T_opt
+!s110 1610255335
+V=i`ZHQjXMn74T6WlDE8PE1
+04 6 4 work cpu_tb fast 0
+=1-00e04c360040-5ffa8be6-27e-4f94
+o-quiet -auto_acc_if_foreign -work work +acc
+Z0 tCvgOpt 0
+n@_opt
+OL;O;10.6d;65
+valu
+Z1 !s110 1610254776
+!i10b 1
+!s100 k;Aj9k1Wa_?4a<RN=z1^D0
+Ig65SJ?4L^ie7hDC6SX=TO0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dE:/Homework/Principle of Computer Composition/exp4
+w1606388575
+8alu.v
+Falu.v
+L0 3
+Z4 OL;L;10.6d;65
+r1
+!s85 0
+31
+Z5 !s108 1610254776.000000
+Z6 !s107 mux2to1.v|main_memory.v|rom.v|register_file.v|pc.v|extsign.v|cu.v|alu.v|E:/Homework/Principle of Computer Composition/exp4/cpu.v|
+Z7 !s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/cpu.v|
+!i113 0
+Z8 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R0
+valu_tb
+!s110 1610254196
+!i10b 1
+!s100 f<C;mEYimXKaW2afhA7h41
+I]:3U20EnLZX6j8<b`Ni=z2
+R2
+R3
+w1606265143
+8E:/Homework/Principle of Computer Composition/exp4/alu_tb.v
+FE:/Homework/Principle of Computer Composition/exp4/alu_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1610254196.000000
+!s107 alu.v|E:/Homework/Principle of Computer Composition/exp4/alu_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/alu_tb.v|
+!i113 0
+R8
+R0
+vcpu
+R1
+!i10b 1
+!s100 Zne8oLg;0=TlR;gaXZECW1
+I55`cK?0=;Qk70lN@M1P<]3
+R2
+R3
+w1610254768
+8E:/Homework/Principle of Computer Composition/exp4/cpu.v
+FE:/Homework/Principle of Computer Composition/exp4/cpu.v
+L0 11
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R0
+vcpu_tb
+!s110 1610254198
+!i10b 1
+!s100 RS;<Tomi?IF9]D1[mNZ5[2
+IL6aVY=SEc7:A9_Xi?hJom2
+R2
+R3
+w1606396083
+8E:/Homework/Principle of Computer Composition/exp4/cpu_tb.v
+FE:/Homework/Principle of Computer Composition/exp4/cpu_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1610254198.000000
+!s107 mux2to1.v|main_memory.v|rom.v|register_file.v|pc.v|extsign.v|cu.v|alu.v|cpu.v|E:/Homework/Principle of Computer Composition/exp4/cpu_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/cpu_tb.v|
+!i113 0
+R8
+R0
+vcu
+!s110 1610254867
+!i10b 1
+!s100 8YO3JFSA9boI9I5Tmb0I>0
+IOM<NGP=9JVAD@`@EoV2033
+R2
+R3
+w1610254852
+8E:/Homework/Principle of Computer Composition/exp4/cu.v
+FE:/Homework/Principle of Computer Composition/exp4/cu.v
+L0 3
+R4
+r1
+!s85 0
+31
+!s108 1610254867.000000
+!s107 E:/Homework/Principle of Computer Composition/exp4/cu.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/cu.v|
+!i113 0
+R8
+R0
+vcu_tb
+!s110 1610254197
+!i10b 1
+!s100 63acd<jH32=;z`^SQ:_L]1
+I066dMP[[Ybz@:fS5OYA_[0
+R2
+R3
+w1606267685
+8E:/Homework/Principle of Computer Composition/exp4/cu_tb.v
+FE:/Homework/Principle of Computer Composition/exp4/cu_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1610254197.000000
+!s107 cu.v|E:/Homework/Principle of Computer Composition/exp4/cu_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/cu_tb.v|
+!i113 0
+R8
+R0
+vextsign
+!s110 1610255330
+!i10b 1
+!s100 :dKDclZEkR]W3QKb1=[ba1
+IWiRB1MGgWaf?d7H]:A9Q30
+R2
+R3
+w1610255314
+8E:/Homework/Principle of Computer Composition/exp4/extsign.v
+FE:/Homework/Principle of Computer Composition/exp4/extsign.v
+L0 4
+R4
+r1
+!s85 0
+31
+Z9 !s108 1610255329.000000
+!s107 E:/Homework/Principle of Computer Composition/exp4/extsign.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/extsign.v|
+!i113 0
+R8
+R0
+vmain_memory
+!s110 1610255329
+!i10b 1
+!s100 S`YR7D>8]UkUmfU4[WQC41
+I=E7n<`iFQBzL03jc700<C2
+R2
+R3
+w1610255310
+8E:/Homework/Principle of Computer Composition/exp4/main_memory.v
+FE:/Homework/Principle of Computer Composition/exp4/main_memory.v
+L0 3
+R4
+r1
+!s85 0
+31
+R9
+!s107 E:/Homework/Principle of Computer Composition/exp4/main_memory.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/main_memory.v|
+!i113 0
+R8
+R0
+vmux2to1
+R1
+!i10b 1
+!s100 Lf`RWlPZ>3]]S]BE]JIMV0
+IXeGIFAH1hI0m2F2Ij>CG_0
+R2
+R3
+w1610247293
+8mux2to1.v
+Fmux2to1.v
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R0
+vpc
+R1
+!i10b 1
+!s100 ZockIcCXU1hZ:QDXInZdC0
+IC]BciKm5IE_`M3h;eb1dS0
+R2
+R3
+w1606298397
+8pc.v
+Fpc.v
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R0
+vpc_tb
+Z10 !s110 1610254194
+!i10b 1
+!s100 :ZNb82Y28_@U4mHk<E_:N2
+Ii<bN4VedHN=Gn]Bi^@nS10
+R2
+R3
+w1606298425
+8E:/Homework/Principle of Computer Composition/exp4/pc_tb.v
+FE:/Homework/Principle of Computer Composition/exp4/pc_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1610254193.000000
+!s107 pc.v|E:/Homework/Principle of Computer Composition/exp4/pc_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/pc_tb.v|
+!i113 0
+R8
+R0
+vregister_file
+R1
+!i10b 1
+!s100 8oZ?^YDzEeioJ5IblS0nX2
+I4IE79lJ]b_HS<S6GJPQmi0
+R2
+R3
+w1606305113
+8register_file.v
+Fregister_file.v
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R0
+vregister_file_tb
+R10
+!i10b 1
+!s100 nb];B[`4K3W__Y;U:mn[J3
+Io4JJ?BIKD<IQEj=TO?@H03
+R2
+R3
+w1606304143
+8E:/Homework/Principle of Computer Composition/exp4/register_file_tb.v
+FE:/Homework/Principle of Computer Composition/exp4/register_file_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1610254194.000000
+!s107 register_file.v|E:/Homework/Principle of Computer Composition/exp4/register_file_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/register_file_tb.v|
+!i113 0
+R8
+R0
+vrom
+R1
+!i10b 1
+!s100 NVP3<2V[m?=AWld77AGXf3
+I;`M>H`XoAVJ@_LoKznaEC2
+R2
+R3
+w1610253556
+8rom.v
+From.v
+L0 3
+R4
+r1
+!s85 0
+31
+R5
+R6
+R7
+!i113 0
+R8
+R0
+vrom_tb
+!s110 1610254195
+!i10b 1
+!s100 b=Shj_NezDA1[Ng6MojAC3
+IMJ3^6a7LGXJTz@>zHME>H2
+R2
+R3
+w1605882853
+8E:/Homework/Principle of Computer Composition/exp4/rom_tb.v
+FE:/Homework/Principle of Computer Composition/exp4/rom_tb.v
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1610254195.000000
+!s107 rom.v|E:/Homework/Principle of Computer Composition/exp4/rom_tb.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|E:/Homework/Principle of Computer Composition/exp4/rom_tb.v|
+!i113 0
+R8
+R0

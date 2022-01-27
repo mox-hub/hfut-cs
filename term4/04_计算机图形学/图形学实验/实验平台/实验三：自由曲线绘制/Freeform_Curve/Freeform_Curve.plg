@@ -1,0 +1,69 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Freeform_Curve - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Freeform_Curve.res" /d "_DEBUG" /d "_AFXDLL" "E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_Curve.rc"" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPDEC4.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Freeform_Curve.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\ColorWnd.cpp"
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_Curve.cpp"
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveDoc.cpp"
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp"
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\MainFrm.cpp"
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\SettingDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPDEC4.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPDEC5.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Freeform_Curve.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPDEC5.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPDEC6.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Freeform_Curve.pdb" /debug /machine:I386 /out:"Debug/Freeform_Curve.exe" /pdbtype:sept 
+".\Debug\ColorWnd.obj"
+".\Debug\Freeform_Curve.obj"
+".\Debug\Freeform_CurveDoc.obj"
+".\Debug\Freeform_CurveView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\SettingDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\Freeform_Curve.res"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPDEC6.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ColorWnd.cpp
+Freeform_Curve.cpp
+Freeform_CurveDoc.cpp
+Freeform_CurveView.cpp
+E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp(380) : warning C4244: '-=' : conversion from 'double' to 'float', possible loss of data
+E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp(390) : warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp(390) : warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp(390) : warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp(390) : warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+MainFrm.cpp
+SettingDlg.cpp
+Generating Code...
+E:\计算机图形学（2020-2021学年第一学期）\实验\实验大纲\实验平台\实验三：自由曲线绘制\Freeform_Curve\Freeform_CurveView.cpp(452) : warning C4700: local variable 'value' used without having been initialized
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/Freeform_Curve.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\ColorWnd.sbr" ".\Debug\Freeform_Curve.sbr" ".\Debug\Freeform_CurveDoc.sbr" ".\Debug\Freeform_CurveView.sbr" ".\Debug\MainFrm.sbr" ".\Debug\SettingDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Freeform_Curve.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

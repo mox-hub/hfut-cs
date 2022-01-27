@@ -1,0 +1,48 @@
+m255
+K3
+13
+cModel Technology
+dE:\modeltech_10.1a\examples
+T_opt
+V^Ff5EEf:MSM8DW<hkmgQT0
+04 10 4 work mux4to1_tb fast 0
+=1-70c94efdc211-5fb4eaf1-256-c40
+o-quiet -auto_acc_if_foreign -work work +acc
+n@_opt
+OE;O;10.1a;51
+vmux4to1
+IKoJEKSh9Yl^k1W<=Z]5V00
+VT`8jEZi=CURSTFhZ@]R3k3
+Z0 dE:\Homework
+w1605691595
+8E:\Homework\mux4to1.v
+FE:\Homework\mux4to1.v
+L0 1
+Z1 OE;L;10.1a;51
+r1
+31
+Z2 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+!s100 =NT^2BgkGeIC`b0[17LJn1
+!s90 -reportprogress|300|-work|work|-vopt|E:\Homework\mux4to1.v|
+!s108 1605692126.366000
+!s107 E:\Homework\mux4to1.v|
+!i10b 1
+!s85 0
+vmux4to1_tb
+I5@`l3I1DaN>l=m0lRBTkW3
+VkRhiB_1iQomACjMWiO]gl2
+Z3 dE:\Homework
+w1605692121
+8E:/Homework/testBench.v
+FE:/Homework/testBench.v
+L0 1
+R1
+r1
+31
+R2
+!s90 -reportprogress|300|-work|work|-vopt|E:/Homework/testBench.v|
+!i10b 1
+!s100 ?O:JKl?B?YmS;BKEGKh=33
+!s85 0
+!s108 1605692126.728000
+!s107 E:/Homework/testBench.v|

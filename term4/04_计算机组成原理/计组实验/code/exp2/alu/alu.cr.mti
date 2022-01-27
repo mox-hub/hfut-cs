@@ -1,0 +1,15 @@
+E:/Homework/alu/alu.v {1 {vlog -work work -vopt E:/Homework/alu/alu.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} E:/Homework/alu/alu_tb.v {1 {vlog -work work -vopt E:/Homework/alu/alu_tb.v
+Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
+-- Compiling module alu_tb
+
+Top level modules:
+	alu_tb
+
+} {} {}}

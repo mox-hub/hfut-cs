@@ -1,0 +1,16 @@
+{E:/Homework/Principle of Computer Composition/pc/pc_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/pc/pc_tb.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module pc
+-- Compiling module pc_tb
+
+Top level modules:
+	pc_tb
+
+} {} {}} {E:/Homework/Principle of Computer Composition/pc/pc.v} {1 {vlog -work work -vopt -stats=none {E:/Homework/Principle of Computer Composition/pc/pc.v}
+Model Technology ModelSim SE-64 vlog 10.6d Compiler 2018.02 Feb 24 2018
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}}
