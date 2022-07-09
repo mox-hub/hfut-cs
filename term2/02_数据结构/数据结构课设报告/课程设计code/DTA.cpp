@@ -1,4 +1,4 @@
-//ÒıÓÃÍ·ÎÄ¼ş
+//å¼•ç”¨å¤´æ–‡ä»¶
 #include<iostream>
 #include<string.h> 
 #include<string>
@@ -11,56 +11,56 @@
 #include <math.h>
 #include <fstream>
 
-//Ê¹ÓÃÃüÃû¿Õ¼ästd
+//ä½¿ç”¨å‘½åç©ºé—´std
 using namespace std;
 
-//ºê¶¨Òå
-#define Feature 100                         //ÌØÕ÷Êı£¨feature£©+1µÄÉÏÏŞ 
-#define Sample  7000                        //Ñù±¾ÊıÁ¿µÄ ÉÏÏŞ 
-#define FeatureChoice 50                    //ÊôĞÔ È¡ÖµÖÖÀà µÄÉÏÏŞ 
+//å®å®šä¹‰
+#define Feature 100                         //ç‰¹å¾æ•°ï¼ˆfeatureï¼‰+1çš„ä¸Šé™ 
+#define Sample  7000                        //æ ·æœ¬æ•°é‡çš„ ä¸Šé™ 
+#define FeatureChoice 50                    //å±æ€§ å–å€¼ç§ç±» çš„ä¸Šé™ 
 
-//½á¹¹Ìå¶¨Òå
-struct Node                 //¾ö²ßÊ÷½Úµã 
+//ç»“æ„ä½“å®šä¹‰
+struct Node                 //å†³ç­–æ ‘èŠ‚ç‚¹ 
 {
-    string attribute;       //ÌØÕ÷Ãû
-    string val;             //ÌØÕ÷Öµ
-    bool isLeaf;            //ÊÇ·ñÎªÒ¶×Ó½Úµã£¨Ò¶×Ó½ÚµãÅĞ¶ÏÖÕÖ¹£©
-    vector<Node*> childs;   //º¢×Ó½Úµã
-    //¹¹Ôìº¯Êı£¬Éè¶¨³õÊ¼Öµ
+    string attribute;       //ç‰¹å¾å
+    string val;             //ç‰¹å¾å€¼
+    bool isLeaf;            //æ˜¯å¦ä¸ºå¶å­èŠ‚ç‚¹ï¼ˆå¶å­èŠ‚ç‚¹åˆ¤æ–­ç»ˆæ­¢ï¼‰
+    vector<Node*> childs;   //å­©å­èŠ‚ç‚¹
+    //æ„é€ å‡½æ•°ï¼Œè®¾å®šåˆå§‹å€¼
 	Node()
 	{
-		val = "";           //³õÊ¼ÌØÕ÷Öµ
-		attribute = "";     //³õÊ¼ÌØÕ÷Ãû
-		isLeaf = false;     //Ä¬ÈÏ²»ÊÇÒ¶×Ó½Úµã
+		val = "";           //åˆå§‹ç‰¹å¾å€¼
+		attribute = "";     //åˆå§‹ç‰¹å¾å
+		isLeaf = false;     //é»˜è®¤ä¸æ˜¯å¶å­èŠ‚ç‚¹
 	}
 };
 
-//È«¾Ö±äÁ¿ 
-vector< vector<string> > trainData;         //´´½¨ÑµÁ·Êı¾İ¼¯
-vector< vector<string> > testData;          //´´½¨ÊµÑéÊı¾İ¼¯
-vector< vector<string> > update;            //´´½¨»º´æ¸üĞÂÊı¾İ¼¯--ÓÃÓÚ´´½¨¾ö²ßÊ÷
-vector<string> attributes;                  //´´½¨ÌØÕ÷
-Node *root = NULL;                          //´´½¨¾ö²ßÊ÷µÄ¸ù½Úµã
+//å…¨å±€å˜é‡ 
+vector< vector<string> > trainData;         //åˆ›å»ºè®­ç»ƒæ•°æ®é›†
+vector< vector<string> > testData;          //åˆ›å»ºå®éªŒæ•°æ®é›†
+vector< vector<string> > update;            //åˆ›å»ºç¼“å­˜æ›´æ–°æ•°æ®é›†--ç”¨äºåˆ›å»ºå†³ç­–æ ‘
+vector<string> attributes;                  //åˆ›å»ºç‰¹å¾
+Node *root = NULL;                          //åˆ›å»ºå†³ç­–æ ‘çš„æ ¹èŠ‚ç‚¹
 
-//È«¾Öº¯Êı
-void DTA_createTrainDataset();                                                                      //´ÓÎÄ±¾ÎÄ¼ş"train.data"¶ÁÈ¡ÎÄ±¾ĞÅÏ¢£¬È»ºó´´½¨ÑµÁ·ÓÃÊı¾İ¼¯
-void DTA_createTestDataset();                                                                       //´ÓÎÄ±¾ÎÄ¼ş"test.data"¶ÁÈ¡ÎÄ±¾ĞÅÏ¢£¬È»ºó´´½¨ÑµÁ·ÓÃÊı¾İ¼¯
-double DTA_calcEntropy(vector< vector<string> > &data);                                             //¼ÆËã¸ø¶¨Êı¾İ¼¯µÄĞÅÏ¢ìØ
-vector< vector<string> > DTA_splitDataSet(vector< vector<string> > data, int axis, string value);   //°´ÕÕ¸ø¶¨ÌØÕ÷»®·ÖÊı¾İ¼¯£¬ĞÂµÄÊı¾İ¼¯µÄÎ¬¶ÈÉÙÁËÒ»¸ö/axis £ºÌØÕ÷ÏÂ±ê/value£ºÌØÕ÷Öµ
-vector<string> DTA_createFeatureList(vector< vector<string> > &data, int axis);                     //´´½¨ÌØÕ÷ÁĞ±í
-int DTA_chooseBestFeatureToSplit(vector< vector<string> > &data);                                   //Ñ¡Ôñ×îºÃµÄÊı¾İ¼¯»®·Ö·½Ê½
-string DTA_majorityCnt(vector<string> &classList);                                                  //·µ»Ø³öÏÖ´ÎÊı×î¶àµÄ·ÖÀàÃû³Æ/Èç¹ûÀà±êÇ©ÒÀ²»Î¨Ò»£¬²ÉÓÃ¶àÊı±í¾öµÄ·½·¨¶¨ÒåÒ¶×Ó½ÚµãµÄ·ÖÀà
-Node* DTA_createTree(Node *root, vector< vector<string> > &data, vector<string> &attribute);        //µİ¹é¹¹½¨¾ö²ßÊ÷
-void DTA_printTree(Node *root, int depth);                                                          //´òÓ¡¾ö²ßÊ÷µ½¡°Tree.txt¡±ÖĞ 
-void DTA_freeNode(Node *root);                                                                      //ÊÍ·Å½Úµã
-string DTA_classify(Node *root, vector<string> &attribute, vector<string> &test);                   //Ô¤²âÒ»×éÊı¾İµÄ½á¹û 
-void DTA_printResult(vector< vector<string> > &data,Node* root);									//´òÓ¡½á¹ûµ½¡°result.txt"ÖĞ												//½«½á¹û´òÓ¡µ½¡°result.txt¡±ÖĞ 
-//º¯ÊıÊµÏÖ
+//å…¨å±€å‡½æ•°
+void DTA_createTrainDataset();                                                                      //ä»æ–‡æœ¬æ–‡ä»¶"train.data"è¯»å–æ–‡æœ¬ä¿¡æ¯ï¼Œç„¶ååˆ›å»ºè®­ç»ƒç”¨æ•°æ®é›†
+void DTA_createTestDataset();                                                                       //ä»æ–‡æœ¬æ–‡ä»¶"test.data"è¯»å–æ–‡æœ¬ä¿¡æ¯ï¼Œç„¶ååˆ›å»ºè®­ç»ƒç”¨æ•°æ®é›†
+double DTA_calcEntropy(vector< vector<string> > &data);                                             //è®¡ç®—ç»™å®šæ•°æ®é›†çš„ä¿¡æ¯ç†µ
+vector< vector<string> > DTA_splitDataSet(vector< vector<string> > data, int axis, string value);   //æŒ‰ç…§ç»™å®šç‰¹å¾åˆ’åˆ†æ•°æ®é›†ï¼Œæ–°çš„æ•°æ®é›†çš„ç»´åº¦å°‘äº†ä¸€ä¸ª/axis ï¼šç‰¹å¾ä¸‹æ ‡/valueï¼šç‰¹å¾å€¼
+vector<string> DTA_createFeatureList(vector< vector<string> > &data, int axis);                     //åˆ›å»ºç‰¹å¾åˆ—è¡¨
+int DTA_chooseBestFeatureToSplit(vector< vector<string> > &data);                                   //é€‰æ‹©æœ€å¥½çš„æ•°æ®é›†åˆ’åˆ†æ–¹å¼
+string DTA_majorityCnt(vector<string> &classList);                                                  //è¿”å›å‡ºç°æ¬¡æ•°æœ€å¤šçš„åˆ†ç±»åç§°/å¦‚æœç±»æ ‡ç­¾ä¾ä¸å”¯ä¸€ï¼Œé‡‡ç”¨å¤šæ•°è¡¨å†³çš„æ–¹æ³•å®šä¹‰å¶å­èŠ‚ç‚¹çš„åˆ†ç±»
+Node* DTA_createTree(Node *root, vector< vector<string> > data, vector<string> &attribute);        //é€’å½’æ„å»ºå†³ç­–æ ‘
+void DTA_printTree(Node *root, int depth);                                                          //æ‰“å°å†³ç­–æ ‘åˆ°â€œTree.txtâ€ä¸­ 
+void DTA_freeNode(Node *root);                                                                      //é‡Šæ”¾èŠ‚ç‚¹
+string DTA_classify(Node *root, vector<string> &attribute, vector<string> &test);                   //é¢„æµ‹ä¸€ç»„æ•°æ®çš„ç»“æœ 
+void DTA_printResult(vector< vector<string> > &data,Node* root);									//æ‰“å°ç»“æœåˆ°â€œresult.txt"ä¸­												//å°†ç»“æœæ‰“å°åˆ°â€œresult.txtâ€ä¸­ 
+//å‡½æ•°å®ç°
 
-//´ÓÎÄ±¾ÎÄ¼ş"train.data"¶ÁÈ¡ÎÄ±¾ĞÅÏ¢£¬È»ºó´´½¨ÑµÁ·ÓÃÊı¾İ¼¯
+//ä»æ–‡æœ¬æ–‡ä»¶"train.data"è¯»å–æ–‡æœ¬ä¿¡æ¯ï¼Œç„¶ååˆ›å»ºè®­ç»ƒç”¨æ•°æ®é›†
 void DTA_createTrainDataset()
 {
-    int i,j;           //ÉèÖÃÑ­»·±äÁ¿
+    int i,j;           //è®¾ç½®å¾ªç¯å˜é‡
 	int num;
     char p,*p2;
     string line;
@@ -68,9 +68,9 @@ void DTA_createTrainDataset()
 	vector<string> temp_line;
     ifstream fin("train.data");
     
-    //Ê×ÏÈ»ñÈ¡µÚÒ»ĞĞ×÷ÎªÊôĞÔ
+    //é¦–å…ˆè·å–ç¬¬ä¸€è¡Œä½œä¸ºå±æ€§
     getline(fin,line);
-    //·Ö¸î³Éµ¥´Ê
+    //åˆ†å‰²æˆå•è¯
     for (string::size_type i = 0;i < line.size(); i++)
     {
         if(line[i]=='\t')
@@ -115,7 +115,7 @@ void DTA_createTrainDataset()
         trainData.push_back(temp_line); 
 		temp_line.clear();
     }
-	fin.close();               //ËùÒÔĞèÒª½«×îºóÒ»ĞĞµÄÊı¾İÔÙÌîÈëµ½¶şÎ¬¶¯Ì¬Êı×éÖĞ
+	fin.close();               //æ‰€ä»¥éœ€è¦å°†æœ€åä¸€è¡Œçš„æ•°æ®å†å¡«å…¥åˆ°äºŒç»´åŠ¨æ€æ•°ç»„ä¸­
 
     for(i = 0; i <attributes.size(); ++i)
 	{
@@ -133,10 +133,10 @@ void DTA_createTrainDataset()
     }
 }
 
-//´ÓÎÄ±¾ÎÄ¼ş"test.data"¶ÁÈ¡ÎÄ±¾ĞÅÏ¢£¬È»ºó´´½¨ÑµÁ·ÓÃÊı¾İ¼¯
+//ä»æ–‡æœ¬æ–‡ä»¶"test.data"è¯»å–æ–‡æœ¬ä¿¡æ¯ï¼Œç„¶ååˆ›å»ºè®­ç»ƒç”¨æ•°æ®é›†
 void DTA_createTestDataset()
 {
-    int i,j;           //ÉèÖÃÑ­»·±äÁ¿
+    int i,j;           //è®¾ç½®å¾ªç¯å˜é‡
 	int num;
     char p;
     string line;
@@ -166,7 +166,7 @@ void DTA_createTestDataset()
         testData.push_back(temp_line); 
 		temp_line.clear();
     }
-	fin.close();               //ËùÒÔĞèÒª½«×îºóÒ»ĞĞµÄÊı¾İÔÙÌîÈëµ½¶şÎ¬¶¯Ì¬Êı×éÖĞ
+	fin.close();               //æ‰€ä»¥éœ€è¦å°†æœ€åä¸€è¡Œçš„æ•°æ®å†å¡«å…¥åˆ°äºŒç»´åŠ¨æ€æ•°ç»„ä¸­
 	
     for (i = 0;i < testData.size(); ++i)
     {
@@ -178,30 +178,30 @@ void DTA_createTestDataset()
     }
 }
 
-//¼ÆËã¸ø¶¨Êı¾İ¼¯µÄĞÅÏ¢ìØ
+//è®¡ç®—ç»™å®šæ•°æ®é›†çš„ä¿¡æ¯ç†µ
 double DTA_calcEntropy (vector< vector<string> > &data)
 {
-	 int n = data.size();                   //ÉèÖÃÑ­»··¶Î§
-	 int i;									//Ñ­»·±äÁ¿ 
-	 map<string, int> classCounts;          //ÉèÖÃ¼üÖµ¶Ô key -- value Ê¹ÓÃmap
-	 int label = data[0].size() - 1;        //È¥³ıÃ¿Ò»ĞĞ×îºóÒ»¸öµÄ×ø±ê
-	 for(i = 0; i < n; i++)             //³õÊ¼Îª0
+	 int n = data.size();                   //è®¾ç½®å¾ªç¯èŒƒå›´
+	 int i;									//å¾ªç¯å˜é‡ 
+	 map<string, int> classCounts;          //è®¾ç½®é”®å€¼å¯¹ key -- value ä½¿ç”¨map
+	 int label = data[0].size() - 1;        //å»é™¤æ¯ä¸€è¡Œæœ€åä¸€ä¸ªçš„åæ ‡
+	 for(i = 0; i < n; i++)             //åˆå§‹ä¸º0
 	 {
 		classCounts[ data[i][label] ] = 0;
 	 }
-	 for(i = 0; i < data.size(); i++)  //Ã¿µ±³öÏÖÒ»´Î£¬+1
+	 for(i = 0; i < data.size(); i++)  //æ¯å½“å‡ºç°ä¸€æ¬¡ï¼Œ+1
 	 {
 		classCounts[ data[i][label] ] += 1;
 	 }
 
-     /*¼ÆËãĞÅÏ¢ìØ
-    ĞÅÏ¢ìØ¼ÆËã·½·¨£º Entropy(D) = -sum( p_i * log_2(p_i) )   
-                    DÎªÑù±¾¼¯ºÏ
-                    1<= i <= Ñù±¾DÖĞËù°üº¬µÄÀà±ğÊı
-                    p_i ÎªµÚi¸öÀà±ğÔÚDÖĞËùÕ¼µÄ±ÈÀı
+     /*è®¡ç®—ä¿¡æ¯ç†µ
+    ä¿¡æ¯ç†µè®¡ç®—æ–¹æ³•ï¼š Entropy(D) = -sum( p_i * log_2(p_i) )   
+                    Dä¸ºæ ·æœ¬é›†åˆ
+                    1<= i <= æ ·æœ¬Dä¸­æ‰€åŒ…å«çš„ç±»åˆ«æ•°
+                    p_i ä¸ºç¬¬iä¸ªç±»åˆ«åœ¨Dä¸­æ‰€å çš„æ¯”ä¾‹
      */
-	 double entropy = 0;                     //ĞÅÏ¢ìØ
-	 map<string, int>::iterator it;         //µü´úÆ÷±éÀúmap
+	 double entropy = 0;                     //ä¿¡æ¯ç†µ
+	 map<string, int>::iterator it;         //è¿­ä»£å™¨éå†map
 	 for(it = classCounts.begin(); it != classCounts.end(); it++)
 	 {
 		 double prob = (double)(it->second) / (double)n;
@@ -212,17 +212,17 @@ double DTA_calcEntropy (vector< vector<string> > &data)
 	 return entropy;
 }
 
-//°´ÕÕ¸ø¶¨ÌØÕ÷»®·ÖÊı¾İ¼¯£¬ĞÂµÄÊı¾İ¼¯µÄÎ¬¶ÈÉÙÁËÒ»¸ö /axis £ºÌØÕ÷ÏÂ±ê /value£ºÌØÕ÷Öµ
+//æŒ‰ç…§ç»™å®šç‰¹å¾åˆ’åˆ†æ•°æ®é›†ï¼Œæ–°çš„æ•°æ®é›†çš„ç»´åº¦å°‘äº†ä¸€ä¸ª /axis ï¼šç‰¹å¾ä¸‹æ ‡ /valueï¼šç‰¹å¾å€¼
 vector< vector<string> > DTA_splitDataSet(vector< vector<string> > data, int axis, string value)
 {
-	vector< vector<string> > result;        //ĞÂ½¨vector´¢´æresult
+	vector< vector<string> > result;        //æ–°å»ºvectorå‚¨å­˜result
 	for(int i = 0; i < data.size(); i++)
 	{
 		if(data[i][axis] == value)
 		{
-			//½«¡°µ±Ç°ÌØÕ÷¡±Õâ¸öÎ¬¶ÈÈ¥µô
+			//å°†â€œå½“å‰ç‰¹å¾â€è¿™ä¸ªç»´åº¦å»æ‰
 			vector<string> removed(data[i].begin(), data[i].begin()+axis);
-			//ÓÃ·¨£ºÔÚÖ¸¶¨Î»ÖÃitÇ°¡°²åÈë¡±Çø¼ä[start, end)µÄËùÓĞÔªËØ.
+			//ç”¨æ³•ï¼šåœ¨æŒ‡å®šä½ç½®itå‰â€œæ’å…¥â€åŒºé—´[start, end)çš„æ‰€æœ‰å…ƒç´ .
             removed.insert(removed.end(), data[i].begin()+axis+1, data[i].end());
 			result.push_back(removed);
 		}
@@ -230,15 +230,16 @@ vector< vector<string> > DTA_splitDataSet(vector< vector<string> > data, int axi
 	// cout << "DTA_splitDataSet is completed" << endl; 
 	return result;
 }
-//´´½¨ÌØÕ÷ÁĞ±í
+
+//åˆ›å»ºç‰¹å¾åˆ—è¡¨
 vector<string> DTA_createFeatureList(vector< vector<string> > &data, int axis)
 {
 	int n = data.size();
-	vector<string> featureList;     //ÌØÕ÷µÄËùÓĞÈ¡Öµ
-	set<string> s;                  //Í¨¹ıset½øĞĞÈ¥ÖØ²Ù×÷
-	for(int j = 0; j < n; j++)      //Ñ°ÕÒ¸ÃÌØÕ÷µÄËùÓĞ¿ÉÄÜÈ¡Öµ
+	vector<string> featureList;     //ç‰¹å¾çš„æ‰€æœ‰å–å€¼
+	set<string> s;                  //é€šè¿‡setè¿›è¡Œå»é‡æ“ä½œ
+	for(int j = 0; j < n; j++)      //å¯»æ‰¾è¯¥ç‰¹å¾çš„æ‰€æœ‰å¯èƒ½å–å€¼
 		s.insert(data[j][axis]);
-	set<string>::iterator it;       //Ö®ºóÁ½²½½«set¼¯ºÏÑ¹ÈëfeatureList
+	set<string>::iterator it;       //ä¹‹åä¸¤æ­¥å°†seté›†åˆå‹å…¥featureList
 	for(it = s.begin(); it != s.end(); it++)
 	{
 		featureList.push_back(*it);
@@ -247,26 +248,26 @@ vector<string> DTA_createFeatureList(vector< vector<string> > &data, int axis)
 	return featureList;
 }
 
-//Ñ¡Ôñ×îºÃµÄÊı¾İ¼¯»®·Ö·½Ê½
+//é€‰æ‹©æœ€å¥½çš„æ•°æ®é›†åˆ’åˆ†æ–¹å¼
 int DTA_chooseBestFeatureToSplit(vector< vector<string> > &data)
 {
-	int n = data[0].size() - 1;                  //ÉèÖÃÑ­»·Çø¼ä
-	double bestEntropy = DTA_calcEntropy(data);      //³õÊ¼ĞÅÏ¢ìØ
-	double bestInfoGain = 0;                     //×î´óµÄĞÅÏ¢ÔöÒæ
-	int bestFeature = 0;                         //×îºÃµÄÌØÕ÷
-	for(int i = 0; i < n; i++)                   //ËùÓĞÌØÕ÷
+	int n = data[0].size() - 1;                  //è®¾ç½®å¾ªç¯åŒºé—´
+	double bestEntropy = DTA_calcEntropy(data);      //åˆå§‹ä¿¡æ¯ç†µ
+	double bestInfoGain = 0;                     //æœ€å¤§çš„ä¿¡æ¯å¢ç›Š
+	int bestFeature = 0;                         //æœ€å¥½çš„ç‰¹å¾
+	for(int i = 0; i < n; i++)                   //æ‰€æœ‰ç‰¹å¾
 	{
-		double newEntropy = 0;                   //ĞÂµÄÌØÕ÷ĞÅÏ¢ìØ
-		vector<string> featureList = DTA_createFeatureList(data, i);  //¸ÃÌØÕ÷µÄËùÓĞ¿ÉÄÜÈ¡Öµ
+		double newEntropy = 0;                   //æ–°çš„ç‰¹å¾ä¿¡æ¯ç†µ
+		vector<string> featureList = DTA_createFeatureList(data, i);  //è¯¥ç‰¹å¾çš„æ‰€æœ‰å¯èƒ½å–å€¼
 		for(int j = 0; j < featureList.size(); j++)
 		{
-            //È¥³ı¸ÃÌØÕ÷
+            //å»é™¤è¯¥ç‰¹å¾
 			vector< vector<string> > subData = DTA_splitDataSet(data, i, featureList[j]);
 			double prob = (double)subData.size() / (double)data.size();
 			newEntropy += prob * DTA_calcEntropy(subData);   
 		}
-		double infoGain = bestEntropy - newEntropy;  //ĞÅÏ¢ÔöÒæ£¬¼´ìØµÄ¼õÉÙ£¬»òÊı¾İÎŞĞò¶ÈµÄ¼õÉÙ
-        //Ñ¡Ôñ×îÓÅµÄĞÅÏ¢ÔöÒæ
+		double infoGain = bestEntropy - newEntropy;  //ä¿¡æ¯å¢ç›Šï¼Œå³ç†µçš„å‡å°‘ï¼Œæˆ–æ•°æ®æ— åºåº¦çš„å‡å°‘
+        //é€‰æ‹©æœ€ä¼˜çš„ä¿¡æ¯å¢ç›Š
 		if(infoGain > bestInfoGain)
 		{
 			bestInfoGain = infoGain;
@@ -279,36 +280,36 @@ int DTA_chooseBestFeatureToSplit(vector< vector<string> > &data)
 
 }
 
-//·µ»Ø³öÏÖ´ÎÊı×î¶àµÄ·ÖÀàÃû³Æ
-//Èç¹ûÀà±êÇ©ÒÀÈ»²»ÊÇÎ¨Ò»µÄ£¬²ÉÓÃ¶àÊı±í¾öµÄ·½·¨¶¨ÒåÒ¶×Ó½ÚµãµÄ·ÖÀà
+//è¿”å›å‡ºç°æ¬¡æ•°æœ€å¤šçš„åˆ†ç±»åç§°
+//å¦‚æœç±»æ ‡ç­¾ä¾ç„¶ä¸æ˜¯å”¯ä¸€çš„ï¼Œé‡‡ç”¨å¤šæ•°è¡¨å†³çš„æ–¹æ³•å®šä¹‰å¶å­èŠ‚ç‚¹çš„åˆ†ç±»
 string DTA_majorityCnt(vector<string> &classList)
 {
-	int n = classList.size();       //ÉèÖÃÑ­»··¶Î§
-	map<string, int> classCount;    //´´½¨classCountµÄkey -- value¼üÖµ¶Ô£¬ÓÃÀ´Í¶Æ±¼ÆÊı
-	int i;                          //Ñ­»·±äÁ¿i
+	int n = classList.size();       //è®¾ç½®å¾ªç¯èŒƒå›´
+	map<string, int> classCount;    //åˆ›å»ºclassCountçš„key -- valueé”®å€¼å¯¹ï¼Œç”¨æ¥æŠ•ç¥¨è®¡æ•°
+	int i;                          //å¾ªç¯å˜é‡i
 
-    //³õÊ¼»¯
+    //åˆå§‹åŒ–
 	for(i = 0; i < n; i++)
 	{
 		classCount[classList[i]] = 0;
 	}
-    //Í¶Æ±¼ÆÊı
+    //æŠ•ç¥¨è®¡æ•°
 	for(i = 0; i < n; i++)
 	{
 		classCount[classList[i]] += 1;
 	}
 
-    //¶àÊıÍ¶Æ±Ëã·¨£¨Majority Vote Algorithm£©
-    int DTA_majorityCnt = 0;            //×î¶àÆ±Êı¼ÆÊıÆ÷
-    map<string, int>::iterator it;  //ÉèÖÃµü´úÆ÷
-    string result = "";             //³õÊ¼»¯result
+    //å¤šæ•°æŠ•ç¥¨ç®—æ³•ï¼ˆMajority Vote Algorithmï¼‰
+    int DTA_majorityCnt = 0;            //æœ€å¤šç¥¨æ•°è®¡æ•°å™¨
+    map<string, int>::iterator it;  //è®¾ç½®è¿­ä»£å™¨
+    string result = "";             //åˆå§‹åŒ–result
 
     for(it = classCount.begin(); it != classCount.end(); it++)
     {
         if(it->second > DTA_majorityCnt)
         {
-            //it->firstÎª¼üÖµ£»
-            //it->secondÎªÊıÖµ£»
+            //it->firstä¸ºé”®å€¼ï¼›
+            //it->secondä¸ºæ•°å€¼ï¼›
             DTA_majorityCnt = it->second;
             result = it->first;
         }
@@ -318,68 +319,70 @@ string DTA_majorityCnt(vector<string> &classList)
     return result;
 }
 
-//µİ¹é¹¹½¨¾ö²ßÊ÷£¨ºËĞÄËã·¨£©
-Node* DTA_createTree(Node *root, vector< vector<string> > &data, vector<string> &attribute)
+//é€’å½’æ„å»ºå†³ç­–æ ‘ï¼ˆæ ¸å¿ƒç®—æ³•ï¼‰
+Node* DTA_createTree(Node *root, vector<vector<string>> data, vector<string> &attribute)
 {
-	if(root == NULL)                    //ĞÂ½¨Á¢¸ù½áµãroot
+	if(root == NULL)                    //æ–°å»ºç«‹æ ¹ç»“ç‚¹root
 		root = new Node();
-	vector<string> classList;           //ÌØÕ÷ÁĞ±í
-	set<string> classList_removal;      //È¥ÖØÌØÕ÷ÁĞ±í
-	int i, j;                           //Ñ­»·±äÁ¿
-	int label = data[0].size() - 1;     //ÉèÖÃÑ­»··¶Î§
-	int n = data.size();                //Êı¾İ¼¯µÄ´óĞ¡
+	vector<string> classList;           //ç‰¹å¾åˆ—è¡¨
+	set<string> classList_removal;      //å»é‡ç‰¹å¾åˆ—è¡¨
+	int i, j;                           //å¾ªç¯å˜é‡
+	int label = data[0].size() - 1;     //è®¾ç½®å¾ªç¯èŒƒå›´
+	int n = data.size();                //æ•°æ®é›†çš„å¤§å°
+
     //TODO: move the n to the beginning as a global value(is ok)
 	for(i = 0; i < n; i++)
 	{
 		classList.push_back(data[i][label]);
 		classList_removal.insert(data[i][label]);
 	}
-	if(classList_removal.size() == 1)   //Èç¹ûËùÓĞÊµÀı¶¼ÊôÓÚÍ¬Ò»Àà£¬Í£Ö¹»®·Ö
+	if(classList_removal.size() == 1)   //å¦‚æœæ‰€æœ‰å®ä¾‹éƒ½å±äºåŒä¸€ç±»ï¼Œåœæ­¢åˆ’åˆ†
 	{
-		if(classList[0] == "yes")
-			root->attribute = "yes";
+		if(classList[0] == "Y")
+			root->attribute = "Y";
 		else
-			root->attribute = "no";
+			root->attribute = "N";
 		root->isLeaf = true;
 		return root;
 	}
-	if(data[0].size() == 1)             //±éÀúÍêËùÓĞÌØÕ÷£¬²ÉÓÃ¶àÊı±í¾ö·µ»Ø³öÏÖ´ÎÊı×î¶àµÄÀà±ğ
+
+	if(data[0].size() == 1)             //éå†å®Œæ‰€æœ‰ç‰¹å¾ï¼Œé‡‡ç”¨å¤šæ•°è¡¨å†³è¿”å›å‡ºç°æ¬¡æ•°æœ€å¤šçš„ç±»åˆ«
 	{
 		root->attribute = DTA_majorityCnt(classList);
 		return root;
 	}
 
-	int bestFeatureIndex = DTA_chooseBestFeatureToSplit(data);                   //Ñ¡Ôñ×îºÃµÄ·½Ê½½øĞĞ»®·Ö
-	vector<string> featureList = DTA_createFeatureList(data, bestFeatureIndex);  //µÃµ½¸ÃÊôĞÔµÄËùÓĞ¿ÉÄÜÖµ
-	string bestFeature = attribute[bestFeatureIndex];                            //¼ÇÂ¼×îºÃµÄÊôĞÔ
+	int bestFeatureIndex = DTA_chooseBestFeatureToSplit(data);                   //é€‰æ‹©æœ€å¥½çš„æ–¹å¼è¿›è¡Œåˆ’åˆ†
+	vector<string> featureList = DTA_createFeatureList(data, bestFeatureIndex);  //å¾—åˆ°è¯¥å±æ€§çš„æ‰€æœ‰å¯èƒ½å€¼
+	string bestFeature = attribute[bestFeatureIndex];                            //è®°å½•æœ€å¥½çš„å±æ€§
  
-	root->attribute = bestFeature;          //¼ÇÂ¼Òª»®·ÖµÄÊôĞÔ
+	root->attribute = bestFeature;          //è®°å½•è¦åˆ’åˆ†çš„å±æ€§
  
-	for(i=0; i<featureList.size(); i++)     //¶ÔÓÚµ±Ç°ÊôĞÔµÄÃ¿¸ö¿ÉÄÜÖµ£¬´´½¨ĞÂµÄ·ÖÖ§
+	for(i=0; i<featureList.size(); i++)     //å¯¹äºå½“å‰å±æ€§çš„æ¯ä¸ªå¯èƒ½å€¼ï¼Œåˆ›å»ºæ–°çš„åˆ†æ”¯
 	{
-		vector<string> subAttribute;        //ĞÂµÄÊôĞÔÁĞ±í£¬²»°üº¬µ±Ç°Òª»®·ÖµÄÊôĞÔ£¬ÌØÕ÷¼õÉÙÒ»¸ö
+		vector<string> subAttribute;        //æ–°çš„å±æ€§åˆ—è¡¨ï¼Œä¸åŒ…å«å½“å‰è¦åˆ’åˆ†çš„å±æ€§ï¼Œç‰¹å¾å‡å°‘ä¸€ä¸ª
 		for(j=0; j<attribute.size(); j++)
 		{
 			if(bestFeature != attribute[j])
 				subAttribute.push_back(attribute[j]);
 		}
-		Node *newNode = new Node();         //ĞÂ½¨½Úµã
-		newNode->val = featureList[i];      //¼ÇÂ¼ÊôĞÔµÄÈ¡Öµ
+		Node *newNode = new Node();         //æ–°å»ºèŠ‚ç‚¹
+		newNode->val = featureList[i];      //è®°å½•å±æ€§çš„å–å€¼
 
-        //µİ¹é´´½¨¾ö²ßÊ÷
+        //é€’å½’åˆ›å»ºå†³ç­–æ ‘
         update = DTA_splitDataSet(data, bestFeatureIndex, featureList[i]);
 		DTA_createTree(newNode, update, subAttribute);
-		root->childs.push_back(newNode);    //Îª¸¸½ÚµãÌí¼Óchild
+		root->childs.push_back(newNode);    //ä¸ºçˆ¶èŠ‚ç‚¹æ·»åŠ child
 	}
 	return root;
 }
 
-//´òÓ¡¾ö²ßÊ÷ 
+//æ‰“å°å†³ç­–æ ‘ 
 void DTA_printTree(Node *root, int depth)
 {
-    ofstream fout("DecisionTree.txt",ios::app);		//Ê¹ÓÃ×·¼ÓµÄ·½Ê½´ò¿ªÎÄ¼ş 
-	int i;              //Ñ­»·±äÁ¿i
-	//Êä³öËã·¨ 
+    ofstream fout("DecisionTree.txt",ios::app);		//ä½¿ç”¨è¿½åŠ çš„æ–¹å¼æ‰“å¼€æ–‡ä»¶ 
+	int i;              //å¾ªç¯å˜é‡i
+	//è¾“å‡ºç®—æ³• 
 	for(i = 0; i < depth; i++)
 		fout << "\t";
 	
@@ -391,8 +394,8 @@ void DTA_printTree(Node *root, int depth)
 	}
 	fout << root->attribute << endl;
 	fout.close();
-	//Çå¿Õ»º´æÇø£¬·ÀÖ¹Î´Â¼Èë 
-	//µü´úÆ÷Êä³öÊ÷ 
+	//æ¸…ç©ºç¼“å­˜åŒºï¼Œé˜²æ­¢æœªå½•å…¥ 
+	//è¿­ä»£å™¨è¾“å‡ºæ ‘ 
 	vector<Node*>::iterator it;
 	for(it = root->childs.begin(); it != root->childs.end(); it++)
 	{
@@ -405,7 +408,7 @@ string DTA_classify(Node *root, vector<string> &attribute, vector<string> &test)
 	string firstFeature = root->attribute;
 	int firstFeatureIndex;
 	int i;
-	for(i=0; i<attributes.size(); i++)  //ÕÒµ½¸ù½ÚµãÊÇµÚ¼¸¸öÌØÕ÷
+	for(i=0; i<attributes.size(); i++)  //æ‰¾åˆ°æ ¹èŠ‚ç‚¹æ˜¯ç¬¬å‡ ä¸ªç‰¹å¾
 	{
 		if(firstFeature == attribute[i])
 		{
@@ -413,7 +416,7 @@ string DTA_classify(Node *root, vector<string> &attribute, vector<string> &test)
 			break;
 		}
 	}
-	if(root->isLeaf)  //Èç¹ûÊÇÒ¶×Ó½Úµã£¬Ö±½ÓÊä³ö½á¹û
+	if(root->isLeaf)  //å¦‚æœæ˜¯å¶å­èŠ‚ç‚¹ï¼Œç›´æ¥è¾“å‡ºç»“æœ
 		return root->attribute;
 	for(i=0; i<root->childs.size(); i++)
 	{
@@ -424,7 +427,7 @@ string DTA_classify(Node *root, vector<string> &attribute, vector<string> &test)
 	}
 }
 
-//½«½á¹û´òÓ¡µ½¡°result.txt¡±ÖĞ 
+//å°†ç»“æœæ‰“å°åˆ°â€œresult.txtâ€ä¸­ 
 void DTA_printResult(vector< vector<string> > &data,Node* root)
 {
 	vector<string> temp;
@@ -439,7 +442,7 @@ void DTA_printResult(vector< vector<string> > &data,Node* root)
 			result = DTA_classify(root,attributes,temp);
 			if(result != "no")
 				result = "yes"; 
-	 		fout << "µÚ" << i << "¸ö²âÊÔµÄ½á¹ûÎª£º" << result << endl;		
+	 		fout << "ç¬¬" << i << "ä¸ªæµ‹è¯•çš„ç»“æœä¸ºï¼š" << result << endl;		
 	 		i++;
 	 		fout.close();
 		}				
@@ -448,7 +451,7 @@ void DTA_printResult(vector< vector<string> > &data,Node* root)
 		cout << "bad_alloc happened" << endl;
 	} 
 }
-//ÊÍ·Å½Úµã
+//é‡Šæ”¾èŠ‚ç‚¹
 
 void DTA_freeNode(Node *root)
 {
@@ -460,28 +463,28 @@ void DTA_freeNode(Node *root)
 	delete root;
 }
 
-//mainº¯Êı
+//mainå‡½æ•°
 int main(void)
 {
-//	²âÊÔprintResultµÄ´úÂë
-//	int i;				//Ñ­»· 
+//	æµ‹è¯•printResultçš„ä»£ç 
+//	int i;				//å¾ªç¯ 
 //	string result;		
 //	vector <string> test;
-//		test.push_back("Óê");
-//		test.push_back("Àä");
-//		test.push_back("Õı³£");
-//		test.push_back("ÎŞ");
+//		test.push_back("é›¨");
+//		test.push_back("å†·");
+//		test.push_back("æ­£å¸¸");
+//		test.push_back("æ— ");
     DTA_createTrainDataset();
 	cout << "DTA_createTrainDataset is completed" << endl;
     DTA_createTestDataset();
 	cout << "DTA_createTestDataset is completed" << endl;
-	//»ñÈ¡root 
+	//è·å–root 
 	root = DTA_createTree(root, trainData, attributes);
 	cout << "DTA_createTree is completed" << endl;
 	DTA_printTree(root, 0);
 	cout << "DTA_printTree is completed" << endl;
 //	result = DTA_classify(root, attributes, test);
-//	cout << "²âÊÔµÄ½á¹ûÎª£º" << result << endl;
+//	cout << "æµ‹è¯•çš„ç»“æœä¸ºï¼š" << result << endl;
 	DTA_printResult(testData,root);
 	cout << "DTA_printResult is completed" << endl;
 	DTA_freeNode(root);
