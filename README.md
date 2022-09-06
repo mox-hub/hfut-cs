@@ -148,7 +148,7 @@
 
 - **非常建议**：支持提交Issues的方式提出您的问题，作者在看到后会第一时间回复。
 - 支持提交PR的方式提交您的相关材料
-- 也欢迎在作者博客[留言板 – Moxhub](https://blog.moxhub.cn/contact/)处留下您的建议
+- 也欢迎在作者博客[留言板 – Moxhub](https://blog.moxhub.cn/s/board)处留下您的建议
 
 ## License
 
